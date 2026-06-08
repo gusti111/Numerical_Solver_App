@@ -1,7 +1,10 @@
+from gettext import install
 import sys
 import numpy as np
 from PySide6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QMessageBox, QFileDialog
 from PySide6.QtGui import QIcon
+import pandas
+import pip
 
 
 # Import UI
@@ -498,3 +501,8 @@ if __name__ == "__main__":
     window = NumericalSolverApp()
     window.show()
     sys.exit(app.exec())
+
+# Catatan:
+# - Pastikan urutan index di `mapping` sesuai dengan urutan halaman di `stackedWidget` kamu di Designer.
+# - Pastikan semua nama widget (seperti `tableHasil`, `inputX0`, dll) sesuai dengan yang ada di `ui_mainMenu.py`.
+# - Jangan lupa install `pandas` dan `openpyxl` untuk fitur export Excel: `pip install pandas openpyxl`
