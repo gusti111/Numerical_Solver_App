@@ -1,3 +1,2 @@
-# Paksa GitHub untuk menghitung statistik berdasarkan file Python saja
 * linguist-vendored
 *.py linguist-vendored=false
