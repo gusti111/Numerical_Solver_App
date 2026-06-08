@@ -1,0 +1,2360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>966</width>
+    <height>610</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_15">
+    <item row="0" column="0">
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="currentIndex">
+       <number>2</number>
+      </property>
+      <widget class="QWidget" name="menu">
+       <property name="styleSheet">
+        <string notr="true">/* === TEMA MENU UTAMA: MODERN DASHBOARD === */
+
+/* 1. BACKGROUND UTAMA */
+QWidget {
+    background-color: #f4f7f6; /* Abu-abu sangat muda, biar mata gak sakit */
+    font-family: &quot;Segoe UI&quot;, &quot;Roboto&quot;, sans-serif;
+}
+
+/* 2. JUDUL UTAMA (HEADER) */
+QLabel {
+    color: #2c3e50;
+}
+/* Asumsi ada label judul paling atas */
+QLabel#judulMenu { 
+    font-size: 28px;
+    font-weight: bold;
+    color: #2c3e50;
+    padding-bottom: 20px;
+}
+
+/* === HEADER KATEGORI (Persamaan Linear &amp; Non-Linear) === */
+
+/* 1. Style Dasar untuk Keduanya */
+QLabel#persamaanLinear, QLabel#persamaanNonLinear {
+    font-size: 24px;              /* Diperbesar drastis (dari 12px) biar gagah */
+    font-weight: 900;             /* Extra Bold */
+    padding: 15px 0px;            /* Jarak atas bawah */
+    margin-bottom: 20px;          /* Jarak ke tombol di bawahnya */
+    background-color: transparent;
+    qproperty-alignment: AlignCenter; /* Pastikan rata tengah */
+}
+
+/* 2. HEADER KIRI: LINEAR (Nuansa Biru) */
+QLabel#persamaanLinear {
+    color: #0984e3;               /* Teks Biru (Matching sama tombol Jacobi) */
+    border-bottom: 2px solid #eaf6ff; /* Garis tipis elegan di bawahnya */
+}
+
+/* 3. HEADER KANAN: NON-LINEAR (Nuansa Oranye) */
+QLabel#persamaanNonLinear {
+    color: #e17055;               /* Teks Oranye (Matching sama tombol Biseksi) */
+    border-bottom: 2px solid #fff0e6; /* Garis tipis elegan di bawahnya */
+}
+
+/* 3. GROUP BOX (CARD STYLE) */
+/* Ini yang bikin rapi saat Full Screen */
+QGroupBox {
+    background-color: #ffffff; /* Kartu Putih */
+    border: 1px solid #dcdde1;
+    border-radius: 15px; /* Sudut membulat */
+    margin-top: 30px; /* Jarak dari atas */
+    font-size: 16px; 
+    font-weight: bold;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top center; /* Judul di tengah */
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: #7f8c8d; /* Warna teks judul kalem */
+    border-radius: 10px;
+}
+
+/* Efek saat mouse masuk ke area GroupBox (Opsional) */
+QGroupBox:hover {
+    border: 2px solid #bdc3c7;
+}
+
+/* 4. TOMBOL-TOMBOL (BUTTONS) */
+QPushButton {
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 5px; /* Jarak antar tombol */
+}
+
+/* --- KELOMPOK LINEAR (KIRI) - TEMA BIRU --- */
+/* Pastikan objectName tombol Linear-mu sesuai (btnJacobi, btnSeidel, btnJordan) */
+QPushButton#btnJacobi, QPushButton#btnSeidel, QPushButton#btnJordan {
+    background-color: #eaf6ff; /* Biru Pucat */
+    color: #0984e3;
+    border: 2px solid #eaf6ff;
+}
+QPushButton#btnJacobi:hover, QPushButton#btnSeidel:hover, QPushButton#btnJordan:hover {
+    background-color: #0984e3; /* Jadi Biru Terang */
+    color: white;
+    border: 2px solid #0984e3;
+}
+
+/* --- KELOMPOK NON-LINEAR (KANAN) - TEMA ORANYE --- */
+/* Pastikan objectName tombol Non-Linear-mu sesuai (btnBiseksi, btnNewton, btnRegula) */
+QPushButton#btnBiseksi, QPushButton#btnNewton, QPushButton#btnRegula {
+    background-color: #fff0e6; /* Oranye Pucat */
+    color: #e17055;
+    border: 2px solid #fff0e6;
+}
+QPushButton#btnBiseksi:hover, QPushButton#btnNewton:hover, QPushButton#btnRegula:hover {
+    background-color: #e17055; /* Jadi Oranye Terang */
+    color: white;
+    border: 2px solid #e17055;
+}
+
+/* Tombol File/Menu di pojok (jika ada) */
+QMenuBar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #dcdde1;
+}
+QMenuBar::item:selected {
+    background-color: #f1f2f6;
+}
+
+(rapikan keseluruhan tampilan halama ini, buat css nya)</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLabel" name="judulMenu">
+          <property name="font">
+           <font>
+            <family>Segoe UI</family>
+            <pointsize>-1</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Perhitungan Persamaan Linear dan Non Linear</string>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::TextFormat::AutoText</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QFrame" name="frame_3">
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <item>
+              <widget class="QSplitter" name="splitter_2">
+               <property name="orientation">
+                <enum>Qt::Orientation::Vertical</enum>
+               </property>
+               <widget class="QLabel" name="persamaanLinear">
+                <property name="text">
+                 <string>Persamaan Linear</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="btnJacobi">
+                <property name="text">
+                 <string>Metode Jacobi</string>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="btnJordan">
+                <property name="text">
+                 <string>Gauss- Jordan</string>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="btnSeidel">
+                <property name="text">
+                 <string>Gauss seidel</string>
+                </property>
+               </widget>
+              </widget>
+             </item>
+             <item>
+              <spacer name="verticalSpacer_3">
+               <property name="orientation">
+                <enum>Qt::Orientation::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame_4">
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_2">
+             <item row="0" column="1">
+              <widget class="QSplitter" name="splitter_4">
+               <property name="orientation">
+                <enum>Qt::Orientation::Vertical</enum>
+               </property>
+               <widget class="QLabel" name="persamaanNonLinear">
+                <property name="text">
+                 <string>Persamaan Non-Linear</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="btnBiseksi">
+                <property name="text">
+                 <string>Metode Biseksi</string>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="btnNewton">
+                <property name="text">
+                 <string>Metode Newton-Raphson</string>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="btnRegula">
+                <property name="text">
+                 <string>Regula Falsi</string>
+                </property>
+               </widget>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <spacer name="verticalSpacer_4">
+               <property name="orientation">
+                <enum>Qt::Orientation::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pageJacobi">
+       <property name="styleSheet">
+        <string notr="true">/* === TEMA JACOBI: BIRU === */
+
+/* Label &amp; Judul */
+QLabel { color: #2d3436; }
+QLabel#labelJudul {
+    font-size: 18px; font-weight: bold; color: #0984e3; /* Judul Biru */
+}
+
+/* GroupBox Container */
+QGroupBox {
+    border: 1px solid #74b9ff; /* Border Biru Muda */
+    border-radius: 8px; margin-top: 25px; background-color: #ffffff;
+}
+QGroupBox::title {
+    subcontrol-origin: margin; left: 15px; color: #0984e3; font-weight: bold;
+}
+
+/* Tabel Input &amp; Hasil */
+QTableWidget {
+    border: 1px solid #b2bec3; gridline-color: #dfe6e9; selection-background-color: #74b9ff;
+}
+QHeaderView::section {
+    background-color: #e1f0ff; /* Header Biru Pucat */
+    font-weight: bold; border: 1px solid #dfe6e9;
+}
+
+/* Tombol Hitung (Spesifik Jacobi) */
+QPushButton#btnHitung {
+    background-color: #0984e3; color: white; border-radius: 6px; padding: 8px; font-weight: bold;
+}
+QPushButton#btnHitung:hover { background-color: #74b9ff; }
+QPushButton#btnHitung:pressed { background-color: #00cec9; }
+
+/* Tombol Reset &amp; Kembali */
+QPushButton#btnReset {
+    border: 1px solid #d63031; color: #d63031; border-radius: 6px; padding: 5px;
+}
+QPushButton#btnReset:hover { background-color: #d63031; color: white; }
+QPushButton#btnKembaliJacobi {
+    border: 1px solid #b2bec3; color: #636e72; border-radius: 4px; padding: 4px;
+}</string>
+       </property>
+       <widget class="QLabel" name="labelJudul">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>0</y>
+          <width>125</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+          <pointsize>-1</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Metode Jacobi</string>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::TextFormat::AutoText</enum>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>30</y>
+          <width>951</width>
+          <height>511</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QFrame" name="frame">
+           <property name="frameShape">
+            <enum>QFrame::Shape::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Shadow::Raised</enum>
+           </property>
+           <widget class="QGroupBox" name="groupBox">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>60</y>
+              <width>441</width>
+              <height>221</height>
+             </rect>
+            </property>
+            <property name="title">
+             <string>Parameter Matriks</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_4">
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_3">
+                 <item>
+                  <widget class="QLabel" name="label">
+                   <property name="text">
+                    <string>Ukuran n</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QSpinBox" name="spinOrde">
+                   <property name="value">
+                    <number>3</number>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnReset">
+                 <property name="text">
+                  <string>Reset Matriks</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QTableWidget" name="tableInput">
+               <row/>
+               <row/>
+               <row/>
+               <column>
+                <property name="text">
+                 <string>x1</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>x2</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>x3</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>b(hasil)</string>
+                </property>
+               </column>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QGroupBox" name="groupBox_2">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>310</y>
+              <width>431</width>
+              <height>191</height>
+             </rect>
+            </property>
+            <property name="title">
+             <string>Parameter Iterasi</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_6">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_5">
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout">
+                 <item>
+                  <widget class="QLabel" name="label_2">
+                   <property name="text">
+                    <string>Tebakan Awal x0 :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_3">
+                   <property name="text">
+                    <string>Toleransi Error</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_4">
+                   <property name="text">
+                    <string>Max Iterasi :</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_4">
+                 <item>
+                  <widget class="QLineEdit" name="inputX0"/>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="inputToleransi"/>
+                 </item>
+                 <item>
+                  <widget class="QSpinBox" name="inputMaxIter"/>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnHitung">
+               <property name="text">
+                <string>Hitung</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QPushButton" name="btnKembaliJacobi">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>20</y>
+              <width>141</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Kembali</string>
+            </property>
+           </widget>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frame_2">
+           <property name="frameShape">
+            <enum>QFrame::Shape::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Shadow::Raised</enum>
+           </property>
+           <widget class="QTableWidget" name="tableHasil">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>70</y>
+              <width>451</width>
+              <height>201</height>
+             </rect>
+            </property>
+            <property name="editTriggers">
+             <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+            </property>
+            <property name="alternatingRowColors">
+             <bool>true</bool>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+            </property>
+            <column>
+             <property name="text">
+              <string>Iterasi</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>x1</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>x2</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>x3</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Error Max</string>
+             </property>
+            </column>
+           </widget>
+           <widget class="QLabel" name="labelStatus">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>20</y>
+              <width>431</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Status: Menunggu...</string>
+            </property>
+           </widget>
+           <widget class="QGroupBox" name="groupBox_3">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>300</y>
+              <width>451</width>
+              <height>181</height>
+             </rect>
+            </property>
+            <property name="title">
+             <string>Solusi Akhir</string>
+            </property>
+            <widget class="QTextEdit" name="txtSolusi">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>30</y>
+               <width>431</width>
+               <height>131</height>
+              </rect>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="pageSeidel">
+       <property name="styleSheet">
+        <string notr="true">/* === TEMA SEIDEL: HIJAU === */
+
+/* Label &amp; Judul */
+QLabel { color: #2d3436; }
+QLabel#labelJudulSeidel {
+    font-size: 18px; font-weight: bold; color: #00b894; /* Judul Hijau */
+}
+
+/* GroupBox Container */
+QGroupBox {
+    border: 1px solid #55efc4; /* Border Hijau Muda */
+    border-radius: 8px; margin-top: 25px; background-color: #ffffff;
+}
+QGroupBox::title {
+    subcontrol-origin: margin; left: 15px; color: #00b894; font-weight: bold;
+}
+
+/* Tabel */
+QTableWidget {
+    border: 1px solid #b2bec3; gridline-color: #dfe6e9; selection-background-color: #55efc4;
+}
+QHeaderView::section {
+    background-color: #e3fff9; /* Header Hijau Pucat */
+    font-weight: bold; border: 1px solid #dfe6e9;
+}
+
+/* Tombol Hitung (Spesifik Seidel) */
+QPushButton#btnHitungSeidel {
+    background-color: #00b894; color: white; border-radius: 6px; padding: 8px; font-weight: bold;
+}
+QPushButton#btnHitungSeidel:hover { background-color: #55efc4; }
+QPushButton#btnHitungSeidel:pressed { background-color: #00cec9; }
+
+/* Tombol Reset */
+QPushButton#btnResetSeidel {
+    border: 1px solid #d63031; color: #d63031; border-radius: 6px; padding: 5px;
+}
+QPushButton#btnResetSeidel:hover { background-color: #d63031; color: white; }
+QPushButton#btnKembaliSeidel {
+    border: 1px solid #b2bec3; color: #636e72; border-radius: 4px; padding: 4px;
+}</string>
+       </property>
+       <widget class="QWidget" name="layoutWidget_3">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>30</y>
+          <width>951</width>
+          <height>511</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_16">
+         <item>
+          <widget class="QFrame" name="frame_13">
+           <property name="frameShape">
+            <enum>QFrame::Shape::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Shadow::Raised</enum>
+           </property>
+           <widget class="QGroupBox" name="groupBox_10">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>60</y>
+              <width>441</width>
+              <height>221</height>
+             </rect>
+            </property>
+            <property name="title">
+             <string>Parameter Matriks</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_17">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_17">
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_18">
+                 <item>
+                  <widget class="QLabel" name="label_13">
+                   <property name="text">
+                    <string>Ukuran n</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QSpinBox" name="spinOrdeSeidel">
+                   <property name="value">
+                    <number>3</number>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnResetSeidel">
+                 <property name="text">
+                  <string>Reset Matriks</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QTableWidget" name="tableInputSeidel">
+               <row/>
+               <row/>
+               <row/>
+               <column>
+                <property name="text">
+                 <string>x1</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>x2</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>x3</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>b(hasil)</string>
+                </property>
+               </column>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QGroupBox" name="groupBox_11">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>310</y>
+              <width>431</width>
+              <height>191</height>
+             </rect>
+            </property>
+            <property name="title">
+             <string>Parameter Iterasi</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_18">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_19">
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_19">
+                 <item>
+                  <widget class="QLabel" name="label_14">
+                   <property name="text">
+                    <string>Tebakan Awal x0 :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_15">
+                   <property name="text">
+                    <string>Toleransi Error</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_16">
+                   <property name="text">
+                    <string>Max Iterasi :</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_20">
+                 <item>
+                  <widget class="QLineEdit" name="inputX0Seidel"/>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="inputTolSeidel"/>
+                 </item>
+                 <item>
+                  <widget class="QSpinBox" name="inputIterSeidel"/>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnHitungSeidel">
+               <property name="text">
+                <string>Hitung</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QPushButton" name="btnKembaliSeidel">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>20</y>
+              <width>141</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Kembali</string>
+            </property>
+           </widget>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frame_14">
+           <property name="frameShape">
+            <enum>QFrame::Shape::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Shadow::Raised</enum>
+           </property>
+           <widget class="QTableWidget" name="tableHasilSeidel">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>70</y>
+              <width>451</width>
+              <height>201</height>
+             </rect>
+            </property>
+            <property name="editTriggers">
+             <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+            </property>
+            <property name="alternatingRowColors">
+             <bool>true</bool>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+            </property>
+            <column>
+             <property name="text">
+              <string>Iterasi</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>x1</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>x2</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>x3</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Error Max</string>
+             </property>
+            </column>
+           </widget>
+           <widget class="QLabel" name="labelStatusSeidel">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>20</y>
+              <width>431</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Status: Menunggu...</string>
+            </property>
+           </widget>
+           <widget class="QGroupBox" name="groupBox_12">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>300</y>
+              <width>451</width>
+              <height>181</height>
+             </rect>
+            </property>
+            <property name="title">
+             <string>Solusi Akhir</string>
+            </property>
+            <widget class="QTextEdit" name="txtSolusiSeidel">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>30</y>
+               <width>431</width>
+               <height>141</height>
+              </rect>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QLabel" name="labelJudulSeidel">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>0</y>
+          <width>616</width>
+          <height>29</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+          <pointsize>-1</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Metode Gauss Seidel</string>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::TextFormat::AutoText</enum>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="pageJordan">
+       <property name="styleSheet">
+        <string notr="true">/* === TEMA JORDAN: UNGU === */
+
+/* Label &amp; Judul */
+QLabel { color: #2d3436; }
+QLabel#labelJudulJordan {
+    font-size: 18px; font-weight: bold; color: #6c5ce7; /* Judul Ungu */
+}
+
+/* GroupBox Container */
+QGroupBox {
+    border: 1px solid #a29bfe; /* Border Ungu Muda */
+    border-radius: 8px; margin-top: 25px; background-color: #ffffff;
+}
+QGroupBox::title {
+    subcontrol-origin: margin; left: 15px; color: #6c5ce7; font-weight: bold;
+}
+
+/* Tabel */
+QTableWidget {
+    border: 1px solid #b2bec3; gridline-color: #dfe6e9; selection-background-color: #a29bfe;
+}
+QHeaderView::section {
+    background-color: #f0f0ff; /* Header Ungu Pucat */
+    font-weight: bold; border: 1px solid #dfe6e9;
+}
+
+/* Tombol Hitung (Spesifik Jordan) */
+QPushButton#btnHitungJordan {
+    background-color: #6c5ce7; color: white; border-radius: 6px; padding: 8px; font-weight: bold;
+}
+QPushButton#btnHitungJordan:hover { background-color: #a29bfe; }
+QPushButton#btnHitungJordan:pressed { background-color: #0984e3; }
+
+/* Tombol Reset */
+QPushButton#btnResetJordan {
+    border: 1px solid #d63031; color: #d63031; border-radius: 6px; padding: 5px;
+}
+QPushButton#btnResetJordan:hover { background-color: #d63031; color: white; }
+QPushButton#btnKembaliJordan {
+    border: 1px solid #b2bec3; color: #636e72; border-radius: 4px; padding: 4px;
+}</string>
+       </property>
+       <widget class="QLabel" name="labelJudulJordan">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>0</y>
+          <width>616</width>
+          <height>29</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+          <pointsize>-1</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>Metode Gauss-Jordan</string>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::TextFormat::AutoText</enum>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QWidget" name="layoutWidget_4">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>30</y>
+          <width>951</width>
+          <height>501</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_20">
+         <item>
+          <widget class="QFrame" name="frame_15">
+           <property name="frameShape">
+            <enum>QFrame::Shape::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Shadow::Raised</enum>
+           </property>
+           <widget class="QGroupBox" name="groupBox_13">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>60</y>
+              <width>441</width>
+              <height>371</height>
+             </rect>
+            </property>
+            <property name="title">
+             <string>Parameter Matriks</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_21">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_21">
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_22">
+                 <item>
+                  <widget class="QLabel" name="label_17">
+                   <property name="text">
+                    <string>Ukuran n</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QSpinBox" name="spinOrdeJordan">
+                   <property name="value">
+                    <number>3</number>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnResetJordan">
+                 <property name="text">
+                  <string>Reset Matriks</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QTableWidget" name="tableInputJordan">
+               <row/>
+               <row/>
+               <row/>
+               <column>
+                <property name="text">
+                 <string>x1</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>x2</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>x3</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>b(hasil)</string>
+                </property>
+               </column>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QPushButton" name="btnKembaliJordan">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>20</y>
+              <width>141</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Kembali</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="btnHitungJordan">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>440</y>
+              <width>421</width>
+              <height>41</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Hitung</string>
+            </property>
+           </widget>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frame_16">
+           <property name="frameShape">
+            <enum>QFrame::Shape::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Shadow::Raised</enum>
+           </property>
+           <widget class="QTableWidget" name="tableHasilJordan">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>70</y>
+              <width>451</width>
+              <height>201</height>
+             </rect>
+            </property>
+            <property name="editTriggers">
+             <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+            </property>
+            <property name="alternatingRowColors">
+             <bool>true</bool>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+            </property>
+            <column>
+             <property name="text">
+              <string>Iterasi</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>x1</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>x2</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>x3</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Error Max</string>
+             </property>
+            </column>
+           </widget>
+           <widget class="QLabel" name="labelStatusJordan">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>20</y>
+              <width>431</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Status: Menunggu...</string>
+            </property>
+           </widget>
+           <widget class="QGroupBox" name="groupBox_15">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>300</y>
+              <width>451</width>
+              <height>181</height>
+             </rect>
+            </property>
+            <property name="title">
+             <string>Solusi Akhir</string>
+            </property>
+            <widget class="QTextEdit" name="txtSolusiJordan">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>30</y>
+               <width>431</width>
+               <height>141</height>
+              </rect>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="pageBiseksi">
+       <property name="styleSheet">
+        <string notr="true">/* === TEMA BISEKSI: ORANYE SUNRISE === */
+
+/* Label &amp; Judul */
+QLabel { color: #2d3436; }
+QLabel#labelJudulBiseksi {
+    font-size: 18px; font-weight: bold; color: #e17055; /* Judul Oranye */
+}
+
+/* GroupBox Container */
+QGroupBox {
+    border: 1px solid #fab1a0; /* Border Peach */
+    border-radius: 8px; margin-top: 25px; background-color: #ffffff;
+}
+QGroupBox::title {
+    subcontrol-origin: margin; left: 15px; color: #e17055; font-weight: bold;
+}
+
+/* Tabel */
+QTableWidget {
+    border: 1px solid #b2bec3; gridline-color: #dfe6e9; selection-background-color: #fab1a0;
+}
+QHeaderView::section {
+    background-color: #fff0e6; /* Header Oranye Pucat */
+    font-weight: bold; border: 1px solid #dfe6e9;
+}
+
+/* Tombol Hitung (Spesifik Biseksi) */
+QPushButton#btnHitungBiseksi {
+    background-color: #e17055; color: white; border-radius: 6px; padding: 8px; font-weight: bold;
+}
+QPushButton#btnHitungBiseksi:hover { background-color: #fab1a0; }
+QPushButton#btnHitungBiseksi:pressed { background-color: #d63031; }
+
+/* Tombol Reset &amp; Kembali */
+QPushButton#btnResetBiseksi {
+    border: 1px solid #d63031; color: #d63031; border-radius: 6px; padding: 5px;
+}
+QPushButton#btnResetBiseksi:hover { background-color: #d63031; color: white; }
+QPushButton#btnKembaliBiseksi {
+    border: 1px solid #b2bec3; color: #636e72; border-radius: 4px; padding: 4px;
+}</string>
+       </property>
+       <widget class="QLabel" name="labelJudulBiseksi">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>-10</y>
+          <width>616</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+          <pointsize>-1</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Metode Biseksi</string>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::TextFormat::AutoText</enum>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QFrame" name="frame_17">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>30</y>
+          <width>311</width>
+          <height>311</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Shape::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Shadow::Raised</enum>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_6">
+         <item row="0" column="0">
+          <widget class="QPushButton" name="btnKembaliBiseksi">
+           <property name="text">
+            <string>Kembali</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <layout class="QGridLayout" name="gridLayout_5">
+           <item row="0" column="0">
+            <widget class="QGroupBox" name="groupBox_14">
+             <property name="title">
+              <string>Input Fungsi dan Batas</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_3">
+              <item row="0" column="0">
+               <layout class="QHBoxLayout" name="horizontalLayout_6">
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_8">
+                  <item>
+                   <widget class="QLabel" name="label_5">
+                    <property name="text">
+                     <string>Fungsi f(x) :</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_6">
+                    <property name="text">
+                     <string>Batas Bawah (a) :</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_7">
+                    <property name="text">
+                     <string>Batas Atas (b) :</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_7">
+                  <item>
+                   <widget class="QLineEdit" name="inputFungsiBiseksi"/>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="inputABiseksi"/>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="inputBBiseksi"/>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QGroupBox" name="groupBox_16">
+             <property name="title">
+              <string>Parameter Iterasi</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_4">
+              <item row="0" column="0">
+               <layout class="QHBoxLayout" name="horizontalLayout_7">
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_9">
+                  <item>
+                   <widget class="QLabel" name="label_8">
+                    <property name="text">
+                     <string>Toleransi Error :</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_9">
+                    <property name="text">
+                     <string>Max Iterasi :</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_10">
+                  <item>
+                   <widget class="QLineEdit" name="inputTolBiseksi"/>
+                  </item>
+                  <item>
+                   <widget class="QSpinBox" name="inputIterBiseksi"/>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="2" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_8">
+           <item>
+            <widget class="QPushButton" name="btnHitungBiseksi">
+             <property name="text">
+              <string>Hitung</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnResetBiseksi">
+             <property name="text">
+              <string>Reset</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QFrame" name="frame_18">
+        <property name="geometry">
+         <rect>
+          <x>317</x>
+          <y>30</y>
+          <width>631</width>
+          <height>521</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Shape::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Shadow::Raised</enum>
+        </property>
+        <widget class="QTableWidget" name="tableHasilBiseksi">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>70</y>
+           <width>621</width>
+           <height>231</height>
+          </rect>
+         </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+         </property>
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+         </property>
+         <column>
+          <property name="text">
+           <string>Iterasi</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>a</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>b</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>c (Tengah)</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>f(c)</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Error</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Ket</string>
+          </property>
+         </column>
+        </widget>
+        <widget class="QLabel" name="labelStatusBiseksi">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>20</y>
+           <width>431</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Status: Menunggu...</string>
+         </property>
+        </widget>
+        <widget class="QGroupBox" name="groupBox_17">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>320</y>
+           <width>621</width>
+           <height>181</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Solusi Akhir</string>
+         </property>
+         <widget class="QTextEdit" name="txtSolusiBiseksi">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>30</y>
+            <width>601</width>
+            <height>131</height>
+           </rect>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="pageNewtonRapshon">
+       <property name="styleSheet">
+        <string notr="true">/* === TEMA NEWTON-RAPHSON: MAGENTA SPEED ⚡ === */
+
+/* 1. LABEL &amp; JUDUL */
+QLabel {
+    color: #2d3436;
+}
+/* Judul Halaman */
+QLabel#labelJudulNewtonRaphson {
+    font-size: 18px;
+    font-weight: bold;
+    color: #e84393; /* Judul Warna Magenta */
+}
+
+/* 2. GROUP BOX (KOTAK KONTAINER) */
+QGroupBox {
+    border: 1px solid #fd79a8; /* Border Pink */
+    border-radius: 8px;
+    margin-top: 25px;
+    background-color: #ffffff;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 15px;
+    padding: 0 5px;
+    color: #e84393; /* Judul Group Pink */
+    font-weight: bold;
+}
+
+/* 3. TABEL HASIL */
+QTableWidget {
+    border: 1px solid #b2bec3;
+    gridline-color: #dfe6e9;
+    selection-background-color: #fd79a8; /* Warna saat baris diklik (Pink) */
+    selection-color: #ffffff;
+}
+QHeaderView::section {
+    background-color: #fff5f7; /* Header Pink Sangat Muda/Pucat */
+    color: #2d3436;
+    font-weight: bold;
+    border: 1px solid #dfe6e9;
+    padding: 6px;
+}
+
+/* 4. INPUT FIELDS (Kotak Ketik) */
+QLineEdit, QSpinBox {
+    border: 1px solid #b2bec3;
+    border-radius: 6px;
+    padding: 5px;
+    background-color: #ffffff;
+}
+/* Saat diklik jadi warna Magenta */
+QLineEdit:focus, QSpinBox:focus {
+    border: 2px solid #e84393; 
+    background-color: #fff0f6;
+}
+
+/* ============================================
+   🚀 TOMBOL UTAMA (HITUNG) - MAGENTA
+   ============================================ */
+QPushButton#btnHitungNewton {
+    background-color: #e84393; /* Warna Dasar Magenta */
+    color: white;
+    border-radius: 6px;
+    padding: 8px 20px;
+    font-weight: bold;
+    border: none;
+}
+QPushButton#btnHitungNewton:hover {
+    background-color: #fd79a8; /* Jadi lebih terang saat didekati mouse */
+}
+QPushButton#btnHitungNewton:pressed {
+    background-color: #d63031; /* Jadi merah saat ditekan */
+}
+
+/* ============================================
+   🔄 TOMBOL RESET - MERAH OUTLINE
+   ============================================ */
+QPushButton#btnResetNewton {
+    background-color: #ffffff;
+    color: #d63031;
+    border: 1px solid #d63031;
+    border-radius: 6px;
+    padding: 5px 15px;
+    font-weight: bold;
+}
+QPushButton#btnResetNewton:hover {
+    background-color: #d63031;
+    color: white;
+}
+
+/* ============================================
+   🔙 TOMBOL KEMBALI - ABU-ABU NETRAL
+   ============================================ */
+QPushButton#btnKembaliNewton {
+    background-color: transparent;
+    border: 1px solid #b2bec3;
+    border-radius: 4px;
+    color: #636e72;
+    padding: 4px 10px;
+}
+QPushButton#btnKembaliNewton:hover {
+    background-color: #dfe6e9;
+    color: #2d3436;
+}
+
+/* 6. KOTAK SOLUSI (HASIL AKHIR) */
+QTextEdit {
+    background-color: #fffdfd; /* Putih kemerahan dikit */
+    border: 1px dashed #fd79a8;
+    border-radius: 6px;
+    font-family: &quot;Consolas&quot;, monospace;
+}</string>
+       </property>
+       <widget class="QLabel" name="labelJudulNewtonRaphson">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>-10</y>
+          <width>616</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+          <pointsize>-1</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Metode Newton-Raphson</string>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::TextFormat::AutoText</enum>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QFrame" name="frame_19">
+        <property name="geometry">
+         <rect>
+          <x>317</x>
+          <y>30</y>
+          <width>641</width>
+          <height>511</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Shape::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Shadow::Raised</enum>
+        </property>
+        <widget class="QTableWidget" name="tableHasilNewton">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>70</y>
+           <width>621</width>
+           <height>231</height>
+          </rect>
+         </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+         </property>
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+         </property>
+         <column>
+          <property name="text">
+           <string>Iterasi</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>x(old)</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>f(x)</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>f'(x)</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>x(new)</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Error</string>
+          </property>
+         </column>
+        </widget>
+        <widget class="QLabel" name="labelStatusNewton">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>20</y>
+           <width>431</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Status: Menunggu...</string>
+         </property>
+        </widget>
+        <widget class="QGroupBox" name="groupBox_18">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>320</y>
+           <width>621</width>
+           <height>181</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Solusi Akhir</string>
+         </property>
+         <widget class="QTextEdit" name="txtSolusiNewton">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>30</y>
+            <width>601</width>
+            <height>131</height>
+           </rect>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QFrame" name="frame_20">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>30</y>
+          <width>311</width>
+          <height>301</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Shape::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Shadow::Raised</enum>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_7">
+         <item row="0" column="0">
+          <widget class="QPushButton" name="btnKembaliNewton">
+           <property name="text">
+            <string>Kembali</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <layout class="QGridLayout" name="gridLayout_8">
+           <item row="0" column="0">
+            <widget class="QGroupBox" name="groupBox_19">
+             <property name="title">
+              <string>Input Fungsi dan Tebakan Awal</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_9">
+              <item row="0" column="0">
+               <layout class="QHBoxLayout" name="horizontalLayout_9">
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_11">
+                  <item>
+                   <widget class="QLabel" name="label_10">
+                    <property name="text">
+                     <string>Fungsi f(x) :</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_11">
+                    <property name="text">
+                     <string>Tebakan Aawl x0 :</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_12">
+                  <item>
+                   <widget class="QLineEdit" name="inputFungsiNewton"/>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="inputX0Newton"/>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QGroupBox" name="groupBox_20">
+             <property name="title">
+              <string>Parameter Iterasi</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_10">
+              <item row="0" column="0">
+               <layout class="QHBoxLayout" name="horizontalLayout_10">
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_13">
+                  <item>
+                   <widget class="QLabel" name="label_18">
+                    <property name="text">
+                     <string>Toleransi Error :</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_19">
+                    <property name="text">
+                     <string>Max Iterasi :</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_14">
+                  <item>
+                   <widget class="QLineEdit" name="inputTolNewton"/>
+                  </item>
+                  <item>
+                   <widget class="QSpinBox" name="inputIterNewton"/>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="2" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_11">
+           <item>
+            <widget class="QPushButton" name="btnHitungNewton">
+             <property name="text">
+              <string>Hitung</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnResetNewton">
+             <property name="text">
+              <string>Reset</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="pageRegula">
+       <property name="styleSheet">
+        <string notr="true">/* === TEMA REGULA FALSI: TOSCA OCEAN 🌊 === */
+
+/* 1. LABEL &amp; JUDUL */
+QLabel {
+    color: #2d3436;
+}
+/* Judul Halaman - Tosca Gelap */
+QLabel#labelJudulRegula {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0097e6; 
+}
+
+/* 2. GROUP BOX (KOTAK KONTAINER) */
+QGroupBox {
+    border: 1px solid #00a8ff; /* Border Biru Laut */
+    border-radius: 8px;
+    margin-top: 25px;
+    background-color: #ffffff;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 15px;
+    padding: 0 5px;
+    color: #0097e6; /* Judul Group Tosca */
+    font-weight: bold;
+}
+
+/* 3. TABEL HASIL */
+QTableWidget {
+    border: 1px solid #b2bec3;
+    gridline-color: #dfe6e9;
+    selection-background-color: #00a8ff; /* Warna saat baris diklik (Biru Laut) */
+    selection-color: #ffffff;
+}
+QHeaderView::section {
+    background-color: #eaf6ff; /* Header Biru Sangat Muda */
+    color: #2d3436;
+    font-weight: bold;
+    border: 1px solid #dfe6e9;
+    padding: 6px;
+}
+
+/* 4. INPUT FIELDS (Kotak Ketik) */
+QLineEdit, QSpinBox {
+    border: 1px solid #b2bec3;
+    border-radius: 6px;
+    padding: 5px;
+    background-color: #ffffff;
+}
+/* Saat diklik jadi warna Tosca */
+QLineEdit:focus, QSpinBox:focus {
+    border: 2px solid #0097e6; 
+    background-color: #f0faff;
+}
+
+/* ============================================
+   🚀 TOMBOL UTAMA (HITUNG) - TOSCA
+   ============================================ */
+QPushButton#btnHitungRegula {
+    background-color: #0097e6; /* Warna Dasar Tosca */
+    color: white;
+    border-radius: 6px;
+    padding: 8px 20px;
+    font-weight: bold;
+    border: none;
+}
+QPushButton#btnHitungRegula:hover {
+    background-color: #00a8ff; /* Lebih terang saat hover */
+}
+QPushButton#btnHitungRegula:pressed {
+    background-color: #006266; /* Hijau tua saat ditekan */
+}
+
+/* ============================================
+   🔄 TOMBOL RESET - MERAH BATA
+   ============================================ */
+QPushButton#btnResetRegula {
+    background-color: #ffffff;
+    color: #c23616; /* Merah Bata */
+    border: 1px solid #c23616;
+    border-radius: 6px;
+    padding: 5px 15px;
+    font-weight: bold;
+}
+QPushButton#btnResetRegula:hover {
+    background-color: #c23616;
+    color: white;
+}
+
+/* ============================================
+   🔙 TOMBOL KEMBALI - ABU-ABU NETRAL
+   ============================================ */
+QPushButton#btnKembaliRegula {
+    background-color: transparent;
+    border: 1px solid #b2bec3;
+    border-radius: 4px;
+    color: #636e72;
+    padding: 4px 10px;
+}
+QPushButton#btnKembaliRegula:hover {
+    background-color: #dfe6e9;
+    color: #2d3436;
+}
+
+/* 6. KOTAK SOLUSI (HASIL AKHIR) */
+QTextEdit {
+    background-color: #f8fbff; /* Biru super tipis */
+    border: 1px dashed #0097e6;
+    border-radius: 6px;
+    font-family: &quot;Consolas&quot;, monospace;
+}</string>
+       </property>
+       <widget class="QLabel" name="labelJudulRegula">
+        <property name="geometry">
+         <rect>
+          <x>153</x>
+          <y>-10</y>
+          <width>616</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+          <pointsize>-1</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Metode Regula Falsi</string>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::TextFormat::AutoText</enum>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QFrame" name="frame_21">
+        <property name="geometry">
+         <rect>
+          <x>317</x>
+          <y>30</y>
+          <width>641</width>
+          <height>511</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Shape::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Shadow::Raised</enum>
+        </property>
+        <widget class="QTableWidget" name="tableHasilRegula">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>70</y>
+           <width>621</width>
+           <height>231</height>
+          </rect>
+         </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+         </property>
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+         </property>
+         <column>
+          <property name="text">
+           <string>Iterasi</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>a</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>b</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>c (Regula)</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>f(c)</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Error</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Ket</string>
+          </property>
+         </column>
+        </widget>
+        <widget class="QLabel" name="labelStatusRegula">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>20</y>
+           <width>431</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Status: Menunggu...</string>
+         </property>
+        </widget>
+        <widget class="QGroupBox" name="groupBox_21">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>320</y>
+           <width>621</width>
+           <height>181</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Solusi Akhir</string>
+         </property>
+         <widget class="QTextEdit" name="txtSolusiRegula">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>30</y>
+            <width>601</width>
+            <height>131</height>
+           </rect>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QFrame" name="frame_22">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>30</y>
+          <width>311</width>
+          <height>341</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Shape::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Shadow::Raised</enum>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_11">
+         <item row="0" column="0">
+          <widget class="QPushButton" name="btnKembaliRegula">
+           <property name="text">
+            <string>Kembali</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <layout class="QGridLayout" name="gridLayout_12">
+           <item row="0" column="0">
+            <widget class="QGroupBox" name="groupBox_22">
+             <property name="title">
+              <string>Input Fungsi dan Batas</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_13">
+              <item row="0" column="0">
+               <layout class="QHBoxLayout" name="horizontalLayout_12">
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_15">
+                  <item>
+                   <widget class="QLabel" name="label_12">
+                    <property name="text">
+                     <string>Fungsi f(x) :</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_20">
+                    <property name="text">
+                     <string>Batas Bawah (a) :</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_21">
+                    <property name="text">
+                     <string>Batas Atas (b) :</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_16">
+                  <item>
+                   <widget class="QLineEdit" name="inputFungsiRegula"/>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="inputARegula"/>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="inputBRegula"/>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QGroupBox" name="groupBox_23">
+             <property name="title">
+              <string>Parameter Iterasi</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_14">
+              <item row="0" column="0">
+               <layout class="QHBoxLayout" name="horizontalLayout_13">
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_22">
+                  <item>
+                   <widget class="QLabel" name="label_22">
+                    <property name="text">
+                     <string>Toleransi Error :</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_23">
+                    <property name="text">
+                     <string>Max Iterasi :</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_23">
+                  <item>
+                   <widget class="QLineEdit" name="inputTolRegula"/>
+                  </item>
+                  <item>
+                   <widget class="QSpinBox" name="inputIterRegula"/>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="2" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_14">
+           <item>
+            <widget class="QPushButton" name="btnHitungRegula">
+             <property name="text">
+              <string>Hitung</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnResetRegula">
+             <property name="text">
+              <string>Reset</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>966</width>
+     <height>33</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionExportExcel"/>
+   </widget>
+   <widget class="QMenu" name="menuabout">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuabout"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionExportExcel">
+   <property name="text">
+    <string>Export Excel</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>Info Kelompok</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
