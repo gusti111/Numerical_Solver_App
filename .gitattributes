@@ -1,2 +1,3 @@
-# Mengabaikan semua file HTML dari perhitungan bahasa statistik GitHub
-*.html linguist-documentation
+# Paksa GitHub untuk menghitung statistik berdasarkan file Python saja
+* linguist-vendored
+*.py linguist-vendored=false
