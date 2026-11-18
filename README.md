@@ -91,7 +91,7 @@ Install the application dependencies and launch:
 - A maximum-iteration result is not automatically a valid solution; inspect the final error and method status.
 - Verify important results independently, particularly when using rounded or poorly conditioned input data.
 
-The function-expression evaluators in the current source use Python eval with a restricted namespace. Do not expose these evaluators to untrusted input in a public service without replacing them with a safe expression parser.
+The function evaluators in the current source use Python eval to process mathematical expression strings. This is not a security sandbox; do not pass untrusted expressions to it. Replace it with a dedicated allowlisted expression parser before exposing the functionality through a public service.
 
 ## Project status
 
