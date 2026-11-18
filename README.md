@@ -29,6 +29,22 @@ The application is intended to support experimentation with numerical methods an
 
 The source modules maintain calculation histories for methods that expose iteration or elimination steps. The interface also includes a menu action for exporting results to Excel.
 
+## Numerical-solving workflow
+
+```mermaid
+flowchart TD
+    A["Launch desktop application"] --> B["Choose numerical method"]
+    B --> C["Enter function or matrix parameters"]
+    C --> D["Set tolerance and iteration limit"]
+    D --> E["Run calculation"]
+    E --> F{"Method type"}
+    F -->|Iterative root or system method| G["Calculate and record iteration history"]
+    F -->|Direct elimination| H["Perform matrix elimination"]
+    G --> I["Review status, approximation, and error"]
+    H --> I
+    I --> J["Export results to Excel when needed"]
+```
+
 ## Technology
 
 - Python
